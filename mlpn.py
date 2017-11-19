@@ -1,7 +1,7 @@
 import numpy as np
 
-STUDENT={'name': 'YOUR NAME',
-         'ID': 'YOUR ID NUMBER'}
+STUDENT = {'name': 'Ofir Bitron',
+           'ID': '200042414'}
 
 def classifier_output(x, params):
     # YOUR CODE HERE.
@@ -34,6 +34,21 @@ def create_classifier(dims):
     to first layer, then the second two are the matrix and vector from first to
     second layer, and so on.
     """
+    j = 0
+    xavier = 6 ** 0.5
     params = []
+    
+    for i in len(dims) - 1:
+        # Compute the initial value range.
+        temp_matrix = xavier / (dims[i] + dims[i + 1])
+        temp_vec = xavier / (dims[i + 1] + 1)
+        
+        # Create matrix 
+        params[j] = np.random.uniform(-temp_matrix, temp_matrix, (dims[i], dims[i + 1]))
+        
+        # Create vector
+        params[j + 1] = np.random.uniform(-temp_vec, temp_vec, dims[i + 1])
+        
+        j += 2
+     
     return params
-

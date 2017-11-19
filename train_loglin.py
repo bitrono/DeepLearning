@@ -56,8 +56,6 @@ def train_classifier(train_data, dev_data, num_iterations, learning_rate, params
         train_loss = cum_loss / len(train_data)
         train_accuracy = accuracy_on_dataset(train_data, params)
         dev_accuracy = accuracy_on_dataset(dev_data, params)
-        if train_accuracy > 0.7 or dev_accuracy > 0.7:
-            learning_rate *= 0.6
         print I, train_loss, train_accuracy, dev_accuracy
     return params
 
